@@ -2,10 +2,9 @@ import * as React from 'react';
 import './App.css';
 import Todoist from './lib/Todoist';
 import HTML5Backend from 'react-dnd-html5-backend';
-import TaskBox from './components/TaskBox';
 import { DragDropContext } from 'react-dnd';
 import { ITask } from './types/Task'
-import Task from './components/Task'
+import PrioityMatrix from './components/PriorityMatrix'
 
 interface IState {
   tasks: ITask[]
@@ -46,7 +45,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <button onClick={this.logOut.bind(this)}>logout</button>
-        {[1,2,3,4].map((id) => this.renderTaskBox(id))}
+        <PrioityMatrix
+          tasks={this.state.tasks}
+          moveTask={this.moveTask.bind(this)}
+          onDragTask={this.onDragTask.bind(this)}
+        />
       </div>
     );
   }
@@ -60,31 +63,6 @@ class App extends React.Component {
 
   private logOut() {
     this.client.logOut();
-  }
-
-
-  private renderTaskBox(id: number) {
-    return (
-      <TaskBox id={id} moveTask={this.moveTask.bind(this)} title={this.getTitleForId(id)}>
-        { this.state.tasks.filter((task) => task.priority == id)
-          .map(task => (
-            <Task 
-              task={task} 
-              onDrag={this.onDragTask.bind(this)}
-            />
-          ))
-        }
-      </TaskBox>
-    )
-  }
-
-  private getTitleForId(id: number) {
-    return [
-      'Not important and Not Urgent',
-      'Important and Not Urgent',
-      'Not important and Urgent',
-      'Important and Urgent'
-    ][id - 1]
   }
 
   private moveTask(taskBoxId: number) {

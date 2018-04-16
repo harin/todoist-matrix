@@ -7,7 +7,7 @@ import {
     DragSourceMonitor
 } from 'react-dnd';
 
-interface IOnDrag {
+export interface IOnDrag {
     (task: ITask): any
 }
 

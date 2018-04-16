@@ -30,7 +30,7 @@ function collect(connect: DropTargetConnector, monitor: DropTargetMonitor) {
     }
 }
 
-interface IMoveTask {
+export interface IMoveTask {
     (id: number): any
 }
 
