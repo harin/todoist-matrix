@@ -6,6 +6,7 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 import PriorityMatrix from '../src/components/PriorityMatrix';
+import '../src/App.css';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -19,10 +20,11 @@ storiesOf('Button', module)
     </Button>
   ));
 
+const tasks = require('./tasks.json')
 
 storiesOf('PriorityMatrix', module)
-  .add('matrix', () => {
+  .add('matrix', () => (
     <PriorityMatrix
-      tasks={[]}
+      tasks={tasks}
     />
-  })
+  ))

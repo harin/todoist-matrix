@@ -1,8 +1,6 @@
 import * as React from 'react';
 import './App.css';
 import Todoist from './lib/Todoist';
-import HTML5Backend from 'react-dnd-html5-backend';
-import { DragDropContext } from 'react-dnd';
 import { ITask } from './types/Task'
 import PrioityMatrix from './components/PriorityMatrix'
 
@@ -92,4 +90,4 @@ class App extends React.Component {
   }
 }
 
-export default DragDropContext(HTML5Backend)(App);
+export default App;
