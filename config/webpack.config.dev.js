@@ -12,6 +12,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -22,6 +23,12 @@ const publicPath = '/';
 const publicUrl = '';
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
+
+// custom shit
+const extractSass = new ExtractTextPlugin({
+  filename: "[name].[contenthash].css",
+  disable: process.env.NODE_ENV === "development"
+});
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -201,6 +208,20 @@ module.exports = {
               },
             ],
           },
+
+          {
+            test: /\.scss$/,
+            use: extractSass.extract({
+                use: [{
+                    loader: "css-loader"
+                }, {
+                    loader: "sass-loader"
+                }],
+                // use style-loader in development
+                fallback: "style-loader"
+            })
+          },
+
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.
@@ -217,6 +238,7 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
+
         ],
       },
       // ** STOP ** Are you adding a new loader?
@@ -263,6 +285,7 @@ module.exports = {
       tsconfig: paths.appTsConfig,
       tslint: paths.appTsLint,
     }),
+    extractSass
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

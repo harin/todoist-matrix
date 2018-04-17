@@ -19,21 +19,27 @@ function PriorityMatrix({
 }: IProps) {
   return (
     <div>
-      {[1, 2, 3, 4].map((id) => {
-        return (
-          <TaskBox id={id} moveTask={moveTask} title="" key={id}>
-            {
-              tasks.filter(task => task.priority === id).map((task) => (
-                <Task
-                  task={task}
-                  onDrag={onDragTask}
-                />
-              ))
-            }
-          </TaskBox>
-        )
-      })
-      }
+      <div className='prioritymatrix'>
+        <div id="topleft">Not Important</div>
+        <div id="topright">Important</div>
+        <div id="righttop">Urgent</div>
+        <div id="rightbottom">Not Urgent</div>
+        {[1, 2, 3, 4].map((id) => {
+          return (
+            <TaskBox id={id} moveTask={moveTask} title="" key={id}>
+              {
+                tasks.filter(task => task.priority === id).map((task) => (
+                  <Task
+                    task={task}
+                    onDrag={onDragTask}
+                  />
+                ))
+              }
+            </TaskBox>
+          )
+        })
+        }
+      </div>
     </div>
   )
 };

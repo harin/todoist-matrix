@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './App.css';
+import './App.scss';
 import Todoist from './lib/Todoist';
 import { ITask } from './types/Task'
 import PrioityMatrix from './components/PriorityMatrix'

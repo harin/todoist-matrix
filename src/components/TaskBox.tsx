@@ -42,16 +42,15 @@ class TaskBox extends React.Component {
     public props: IProps & IConnectProps
     public state: IState
     public render() {
-        const { children, connectDropTarget, isOver, title} = this.props;
-        const style: any = {
-            backgroundColor: 'grey',
-        };
+        const { id, children, connectDropTarget, isOver} = this.props;
+
+        const classNames = ['taskbox'];
+
         if (isOver) {
-            style.backgroundColor = 'red';
+            classNames.push('taskbox-over');
         }
         return connectDropTarget(
-            <div style={style}>
-                <h3>{title}</h3>
+            <div id={'taskbox'+id} className={classNames.join(' ')}>
                 {children}
             </div>
         );

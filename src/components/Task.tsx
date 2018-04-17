@@ -41,7 +41,7 @@ class Task extends React.Component {
     public render() {
         const { task, connectDragSource } = this.props;
         return connectDragSource(
-            <li>{task.content}({task.priority})</li>
+            <div className='task'>{task.content}({task.priority})</div>
         );
     }
 }

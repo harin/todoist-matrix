@@ -6,7 +6,7 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 import PriorityMatrix from '../src/components/PriorityMatrix';
-import '../src/App.css';
+import '../src/App.scss';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
