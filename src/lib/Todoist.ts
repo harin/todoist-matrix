@@ -28,7 +28,7 @@ class Todoist {
         const json = await result.json();
         console.assert(json.token_type === 'Bearer');
         window.localStorage.setItem('accessToken', json.access_token);
-        window.location.href = config.self_host;
+        window.location.href = window.location.origin + window.location.pathname;
 
         return json.access_token;
     }
@@ -76,7 +76,7 @@ class Todoist {
     public async logOut() {
         localStorage.removeItem('accessToken');
         await Todoist.revokeAccessToken(this.apitoken);
-        window.location.href = config.self_host;
+        window.location.href = window.location.origin + window.location.pathname;
     }
 
     public async getTasks() {
