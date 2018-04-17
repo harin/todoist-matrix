@@ -1,0 +1,78 @@
+.App {
+  text-align: center;
+  font-family: sans-serif; }
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px; }
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white; }
+
+.App-title {
+  font-size: 1.5em; }
+
+.App-intro {
+  font-size: large; }
+
+.prioritymatrix {
+  display: grid;
+  grid-template-columns: 45% 45% 10%;
+  grid-template-rows: 10% 45% 45%; }
+  .prioritymatrix #topleft {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1; }
+  .prioritymatrix #topright {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1; }
+  .prioritymatrix #righttop {
+    grid-column: 3 / span 1;
+    grid-row: 2 / span 1;
+    writing-mode: vertical-lr;
+    margin: 0px auto; }
+  .prioritymatrix #rightbottom {
+    grid-column: 3 / span 1;
+    grid-row: 3 / span 1;
+    writing-mode: vertical-lr;
+    margin: 0px auto; }
+  .prioritymatrix #taskbox1 {
+    grid-column: 1 /span 1;
+    grid-row: 3 / span 1; }
+  .prioritymatrix #taskbox2 {
+    grid-column: 2/span 1;
+    grid-row: 3/span 1; }
+  .prioritymatrix #taskbox3 {
+    grid-column: 1/span 1;
+    grid-row: 2/span 1; }
+  .prioritymatrix #taskbox4 {
+    grid-column: 2/span 1;
+    grid-row: 2/span 1; }
+
+.taskbox {
+  margin: 5px;
+  border: 1px dashed #eeeeee;
+  padding: 10px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column; }
+
+.taskbox-over {
+  background-color: #eaeaea; }
+
+.task {
+  font-family: sans-serif;
+  padding: 10px 10px;
+  margin: 1px;
+  border-radius: 2px;
+  background-color: #eeeeee; }
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+body{margin:0;padding:0;font-family:sans-serif}
+/*# sourceMappingURL=main.2f7e5b2b436e5a38487f87c9bfe6ab49.css.map*/

@@ -1,6 +1,7 @@
 {
   "name": "todoist-matrix",
   "version": "0.1.0",
+  "homepage": "http://harin.github.io/todoist-matrix",
   "private": true,
   "dependencies": {
     "@types/react-dnd-html5-backend": "^2.1.9",
